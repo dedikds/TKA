@@ -1,0 +1,2316 @@
+:root {
+    --sim-blue: #3f7fb8;
+    --sim-blue-dark: #376f9f;
+    --sim-blue-deep: #21439d;
+    --sim-text: #252b33;
+    --sim-muted: #687386;
+    --sim-line: #d5e0eb;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { font-family: "Segoe UI", Arial, sans-serif; color: var(--sim-text); }
+
+.sim-public {
+    min-height: 100vh;
+    background-color: var(--sim-blue);
+    background-image:
+        radial-gradient(circle at 20px 18px, rgba(255,255,255,.10) 1.4px, transparent 1.6px),
+        radial-gradient(circle at 62px 54px, rgba(255,255,255,.06) 1.4px, transparent 1.6px),
+        linear-gradient(180deg, #3f79ae 0%, #4584bd 100%);
+    background-size: 78px 78px, 78px 78px, 100% 100%;
+}
+
+.sim-topbar {
+    height: 130px;
+    background: rgba(55, 111, 159, .92);
+    display: flex;
+    align-items: center;
+    padding: 0 34px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.10);
+}
+.sim-topbar-center { justify-content: center; }
+.sim-brand { display: flex; align-items: center; gap: 18px; color: #fff; }
+.sim-brand-center { min-width: 360px; justify-content: flex-start; }
+.sim-brand-logo { width: 60px; height: 60px; object-fit: contain; }
+.sim-brand-title { font-size: 23px; line-height: 1.2; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
+.sim-brand-subtitle { margin-top: 7px; font-size: 13px; font-weight: 600; letter-spacing: 3px; opacity: .92; }
+
+.sim-stage { min-height: calc(100vh - 130px); display: flex; justify-content: center; align-items: flex-start; padding: 34px 18px 56px; }
+.sim-stage-login { padding-top: 20px; }
+.sim-card {
+    background: #fff;
+    width: 448px;
+    max-width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(25, 55, 85, .18);
+}
+.sim-card-select { padding: 42px 43px; text-align: center; }
+.sim-round-icon {
+    width: 74px; height: 74px; border-radius: 50%; margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    background: #3f7fb8; color: #fff; font-size: 31px;
+    box-shadow: 0 11px 28px rgba(63,127,184,.20);
+}
+.sim-card h1 { margin: 0; font-size: 27px; line-height: 1.2; }
+.sim-lead { color: var(--sim-muted); font-size: 14px; line-height: 1.45; margin: 7px 0 26px; }
+.sim-field { text-align: left; margin-bottom: 24px; }
+.sim-field label { display: block; font-size: 14px; font-weight: 800; margin-bottom: 10px; }
+.sim-field label i { color: #276a9f; width: 20px; }
+.sim-select-wrap { position: relative; }
+.sim-select-wrap:after {
+    content: "\f078"; font-family: "Font Awesome 5 Free"; font-weight: 900;
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    color: #2d6d9f; pointer-events: none; font-size: 13px;
+}
+.sim-select-wrap select {
+    appearance: none; -webkit-appearance: none;
+    width: 100%; min-height: 51px; border: 1px solid var(--sim-line); border-radius: 11px;
+    padding: 0 42px 0 17px; background: #fff; color: #4a5260; font-size: 15px; font-weight: 600;
+    outline: none; box-shadow: 0 4px 11px rgba(42, 77, 112, .08);
+}
+.sim-select-wrap select:focus { border-color: #4b87ba; box-shadow: 0 0 0 3px rgba(63,127,184,.12); }
+.sim-select-wrap select:disabled { background: #f5f7fa; color: #a8b0ba; }
+
+.sim-primary-btn, .sim-secondary-btn {
+    min-height: 52px; border: 0; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 0 22px; font-weight: 800; font-size: 15px; text-decoration: none; cursor: pointer;
+}
+.sim-primary-btn { width: 100%; background: #447fb6; color: #fff; box-shadow: 0 10px 24px rgba(39,94,145,.22); }
+.sim-primary-btn:hover { background: #326fa7; color: #fff; }
+.sim-primary-btn:disabled { background: #aebdca; box-shadow: none; cursor: not-allowed; }
+.sim-secondary-btn { background: #eef3f8; color: #315f88; border: 1px solid #d4e0eb; }
+.sim-alert { text-align: left; padding: 11px 13px; background: #fff0f0; color: #a52d2d; border: 1px solid #f3c9c9; border-radius: 9px; font-size: 13px; margin: 0 0 18px; }
+.sim-empty { margin: -5px 0 18px; padding: 12px; background: #fff8e4; color: #7b6120; border-radius: 9px; font-size: 13px; text-align: left; }
+.sim-footer { position: fixed; left: 50%; bottom: 10px; transform: translateX(-50%); background: rgba(255,255,255,.94); border-radius: 28px; padding: 10px 22px; color: #555; font-size: 12px; white-space: nowrap; box-shadow: 0 7px 20px rgba(0,0,0,.05); }
+
+
+.sim-card-login { width: 430px; border-radius: 18px; overflow: hidden; padding: 0 30px 26px; }
+.sim-login-head { text-align: center; padding: 25px 18px 14px; margin: 0 -30px 16px; border-bottom: 1px solid #e8edf2; }
+.sim-login-logo { width: 66px; height: 66px; object-fit: contain; margin-bottom: 8px; padding: 5px; border-radius: 14px; background: #f7fafc; }
+.sim-login-head h1 { color: #173e8d; font-size: 24px; margin-bottom: 7px; }
+.sim-login-head p { margin: 0 auto; max-width: 340px; color: #62748a; line-height: 1.4; font-size: 13px; }
+.sim-package-chip { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 11px; border-radius: 9px; background: #f3f7fb; color: #355471; font-size: 12px; margin-bottom: 14px; }
+.sim-package-chip span { color: #66788a; text-align: right; }
+.sim-package-chip-center { justify-content: center; flex-direction: column; text-align: center; max-width: 340px; margin: 18px auto 0; }
+.sim-login-field { margin-bottom: 15px; }
+.sim-login-field label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+.sim-login-field input { width: 100%; height: 47px; border: 1px solid #b9cce0; border-radius: 9px; background: #eef4fb; padding: 0 15px; font-size: 15px; color: #111; outline: none; }
+.sim-login-field input:focus { border-color: #4b87ba; box-shadow: 0 0 0 3px rgba(63,127,184,.10); }
+.sim-password-wrap { position: relative; }
+.sim-password-wrap input { padding-right: 48px; }
+.sim-password-wrap button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); border: 0; background: transparent; color: #94a5b8; width: 39px; height: 39px; cursor: pointer; font-size: 16px; }
+.sim-login-btn { width: 100%; height: 49px; border: 0; border-radius: 9px; background: #397cb6; color: #fff; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 8px 18px rgba(39,94,145,.20); }
+.sim-login-btn:hover { background: #2f6fa8; }
+.sim-back-link { display: block; margin-top: 13px; text-align: center; color: #4e7295; font-size: 12px; text-decoration: none; }
+
+/* Halaman konfirmasi peserta */
+.sim-confirm-page { min-height: 100vh; }
+.confirm-topbar {
+    min-height: 140px;
+    background: rgba(55, 111, 159, .94);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 42px;
+    gap: 24px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.10);
+}
+.confirm-brand, .confirm-user { display: flex; align-items: center; gap: 14px; }
+.confirm-brand img { width: 62px; height: 62px; object-fit: contain; }
+.confirm-brand strong { display: block; font-size: 20px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; }
+.confirm-brand span { display: block; margin-top: 6px; font-size: 12px; font-weight: 600; letter-spacing: 2px; opacity: .94; }
+.confirm-user { text-align: right; }
+.confirm-user b { display: block; font-size: 13px; }
+.confirm-user small { display: block; margin-top: 4px; opacity: .85; }
+.confirm-user i { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: rgba(154,205,255,.45); color: #eaf5ff; }
+.confirm-shell {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 2.15fr) minmax(380px, .95fr);
+    gap: 30px;
+    align-items: start;
+    padding: 34px 42px 56px;
+}
+.confirm-left { min-width: 0; }
+.confirm-token-card, .confirm-participant-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 18px 38px rgba(25,55,85,.18);
+}
+.confirm-token-card { padding: 0; overflow: hidden; }
+.confirm-token-row { min-height: 92px; display: flex; align-items: center; gap: 18px; padding: 20px 46px; }
+.confirm-token-text { font-size: 17px; color: #353f49; }
+.confirm-token-text strong { font-size: 20px; letter-spacing: 1.5px; color: #263b50; }
+.confirm-refresh-form { margin: 0; }
+.confirm-refresh-btn { border: 0; border-radius: 4px; padding: 10px 14px; background: #0d82f6; color: #fff; font-size: 13px; cursor: pointer; }
+.confirm-refresh-btn:hover { background: #0872db; }
+.confirm-rules { border-top: 1px solid #edf1f5; padding: 28px 46px 34px; }
+.confirm-rules h2 { margin: 0 0 18px; font-size: 21px; color: #2f5272; }
+.confirm-rules h2 i { margin-right: 8px; color: #397cb6; }
+.confirm-rules ol { margin: 0; padding-left: 23px; color: #4c5967; font-size: 14px; line-height: 1.8; }
+.confirm-rules li + li { margin-top: 8px; }
+.confirm-participant-card { padding: 28px 40px 38px; }
+.confirm-participant-card h1 { margin: 0 0 18px; font-size: 25px; font-weight: 500; color: #242b33; }
+.confirm-static-row, .confirm-field { padding: 10px 0; border-bottom: 1px solid #e3e8ed; }
+.confirm-static-row label, .confirm-field label { display: block; margin-bottom: 6px; font-size: 10px; font-weight: 800; color: #313942; }
+.confirm-static-row div { font-size: 14px; color: #232a31; }
+.confirm-field input, .confirm-field select {
+    width: 100%;
+    height: 39px;
+    border: 0;
+    border-radius: 0;
+    background: #f1f1f1;
+    padding: 0 12px;
+    font-size: 14px;
+    color: #555f69;
+    outline: none;
+}
+.confirm-field input:focus, .confirm-field select:focus { box-shadow: inset 0 0 0 1px #79a8d0; background: #f7fbff; }
+.confirm-date-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+.confirm-token-input label { color: #0d78df; }
+.confirm-token-input input { background: transparent; padding-left: 0; font-size: 15px; border-bottom: 1px solid #e2e7ec; }
+.confirm-submit-btn { width: 100%; height: 38px; border: 0; border-radius: 4px; background: #0b82f6; color: #fff; margin-top: 28px; font-size: 14px; cursor: pointer; }
+.confirm-submit-btn:hover { background: #0871d7; }
+
+.sim-exam-page { min-height: 100vh; margin: 0; background: #eef2f6; }
+.exam-topbar { min-height: 88px; background: #3978ad; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 14px 36px; gap: 24px; box-shadow: 0 1px 6px rgba(0,0,0,.12); }
+.exam-brand, .exam-user { display: flex; align-items: center; gap: 13px; }
+.exam-brand img { width: 54px; height: 54px; object-fit: contain; }
+.exam-brand strong { display: block; font-size: 17px; }
+.exam-brand span { display: block; margin-top: 3px; font-size: 13px; opacity: .9; }
+.exam-user i { width: 43px; height: 43px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.15); font-size: 20px; }
+.exam-user b, .exam-user small { display: block; }
+.exam-user small { opacity: .82; margin-top: 2px; }
+.exam-shell { max-width: 1120px; margin: 28px auto 50px; padding: 0 18px; }
+.exam-card { background: #fff; border-radius: 12px; box-shadow: 0 7px 24px rgba(38,62,84,.10); overflow: hidden; }
+.exam-card-head, .exam-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 22px; background: #fff; }
+.exam-card-head { border-bottom: 1px solid #e7edf3; font-weight: 700; }
+.exam-card-head #nomor-soal { display: inline-flex; min-width: 38px; height: 38px; align-items: center; justify-content: center; background: #3c80bd; color: #fff; border-radius: 6px; margin-left: 6px; }
+.exam-grid-btn { border: 0; border-radius: 8px; background: #3479b5; color: #fff; padding: 10px 14px; font-weight: 700; cursor: pointer; }
+.exam-question-area { min-height: 450px; padding: 22px; }
+.exam-question { display: none; }
+.exam-question.active { display: block; }
+.exam-question-text { font-size: 17px; line-height: 1.65; color: #242b34; overflow-x: auto; }
+.exam-question-text img, .exam-option-content img, .exam-question-media img { max-width: 100%; height: auto; }
+.exam-question-media { margin: 15px 0; text-align: center; }
+.exam-answer { margin-top: 24px; }
+.exam-option { display: flex; align-items: flex-start; gap: 12px; margin: 11px 0; border: 1px solid #dfe7ef; border-radius: 9px; padding: 13px 14px; cursor: pointer; transition: .15s ease; }
+.exam-option:hover { border-color: #82add0; background: #f7fbff; }
+.exam-option input { position: absolute; opacity: 0; pointer-events: none; }
+.exam-option-letter { flex: 0 0 34px; height: 34px; border-radius: 50%; border: 2px solid #4b84b4; display: inline-flex; align-items: center; justify-content: center; color: #2f6f9f; font-weight: 800; }
+.exam-option input:checked + .exam-option-letter { background: #397db7; color: #fff; }
+.exam-option-content { flex: 1; line-height: 1.55; }
+.exam-text-label { display: block; font-weight: 800; margin-bottom: 8px; }
+.exam-text-input, .exam-textarea { width: 100%; border: 1px solid #ccd8e4; border-radius: 8px; padding: 12px 14px; font-size: 15px; outline: none; }
+.exam-textarea { resize: vertical; min-height: 120px; font-family: inherit; }
+.exam-match-note { padding: 11px 13px; background: #eef6fc; color: #356383; border-radius: 7px; margin-bottom: 12px; font-size: 13px; }
+.exam-card-footer { border-top: 1px solid #e7edf3; }
+.exam-nav-btn, .exam-ragu-btn { border: 0; border-radius: 8px; min-height: 42px; padding: 0 16px; font-weight: 800; cursor: pointer; }
+.exam-nav-btn { background: #377db7; color: #fff; }
+.exam-nav-btn:disabled { background: #aab7c2; cursor: not-allowed; }
+.exam-next.finish { background: #2c9a5b; }
+.exam-ragu-btn { background: #f4c542; color: #343434; }
+.exam-ragu-btn.active { background: #dc5f5f; color: #fff; }
+.exam-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(20,31,43,.54); padding: 20px; z-index: 1000; }
+.exam-modal.open { display: flex; }
+.exam-modal-dialog { width: 600px; max-width: 100%; background: #fff; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.24); overflow: hidden; }
+.exam-modal-head { display: flex; justify-content: space-between; align-items: center; padding: 17px 20px; border-bottom: 1px solid #e2e8ef; }
+.exam-modal-head button { border: 0; background: transparent; font-size: 27px; cursor: pointer; }
+.exam-number-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; padding: 20px; }
+.exam-number-btn { position: relative; border: 1px solid #cbd7e2; background: #fff; border-radius: 7px; min-height: 43px; font-weight: 800; cursor: pointer; }
+.exam-number-btn.answered { background: #3c81bc; color: #fff; border-color: #3c81bc; }
+.exam-number-btn.doubt:after { content: "!"; position: absolute; right: -5px; top: -6px; width: 18px; height: 18px; line-height: 18px; border-radius: 50%; background: #f6c538; color: #222; font-size: 11px; }
+.exam-number-btn.current { outline: 3px solid rgba(46,100,147,.22); }
+.exam-empty-card { max-width: 560px; margin: 70px auto; text-align: center; padding: 45px 35px; }
+.exam-empty-card > i { font-size: 44px; color: #e1a634; }
+.exam-inline-btn { width: auto; margin-top: 14px; }
+.sim-finish-card { text-align: center; padding: 44px 38px; }
+.sim-finish-icon { background: #319860; }
+.sim-finish-actions { display: flex; gap: 12px; margin-top: 28px; }
+.sim-finish-actions .sim-primary-btn, .sim-finish-actions .sim-secondary-btn { flex: 1; width: auto; }
+
+@media (max-width: 760px) {
+    .sim-topbar { height: 104px; padding: 0 18px; }
+    .sim-stage { min-height: calc(100vh - 104px); padding-top: 24px; }
+    .sim-brand-logo { width: 48px; height: 48px; }
+    .sim-brand-title { font-size: 16px; }
+    .sim-brand-subtitle { font-size: 10px; letter-spacing: 1.5px; }
+    .sim-brand-center { min-width: 0; }
+    .sim-card-select { padding: 32px 24px; }
+    .sim-card-login { width: 410px; padding: 0 20px 24px; }
+    .sim-login-head { margin-left: -20px; margin-right: -20px; padding-top: 24px; }
+    .sim-footer { display: none; }
+    .exam-topbar { padding: 12px 16px; align-items: flex-start; }
+    .exam-user { display: none; }
+    .exam-brand img { width: 44px; height: 44px; }
+    .exam-card-head, .exam-card-footer { padding: 14px; }
+    .exam-question-area { padding: 16px; }
+    .exam-card-footer { gap: 7px; }
+    .exam-nav-btn span { display: none; }
+    .exam-number-grid { grid-template-columns: repeat(5, 1fr); }
+    .sim-finish-actions { flex-direction: column; }
+    .confirm-topbar { min-height: 104px; padding: 14px 18px; }
+    .confirm-brand img { width: 48px; height: 48px; }
+    .confirm-brand strong { font-size: 15px; }
+    .confirm-brand span { font-size: 9px; letter-spacing: 1.2px; }
+    .confirm-user { display: none; }
+    .confirm-shell { grid-template-columns: 1fr; gap: 18px; padding: 20px 16px 36px; }
+    .confirm-token-row { padding: 18px 20px; flex-wrap: wrap; }
+    .confirm-rules { padding: 22px 20px 26px; }
+    .confirm-participant-card { padding: 24px 20px 28px; }
+    .confirm-participant-card h1 { font-size: 22px; }
+    .confirm-date-grid { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* V4 - warna mengikuti referensi: biru-abu gelap, bukan abu-abu muda */
+.sim-login-page {
+    background: #355f89;
+    background-image: linear-gradient(108deg, #31577e 0%, #376896 48%, #4479b0 100%);
+}
+.sim-login-page .sim-topbar {
+    height: 92px;
+    min-height: 92px;
+    padding: 0 30px;
+    background: linear-gradient(90deg, #386c9f 0%, #447ab1 100%);
+    box-shadow: 0 1px 0 rgba(22,54,82,.30);
+}
+.sim-login-page .sim-brand { gap: 13px; }
+.sim-login-page .sim-brand-logo { width: 48px; height: 48px; }
+.sim-login-page .sim-brand-title { font-size: 18px; letter-spacing: .4px; }
+.sim-login-page .sim-brand-subtitle { margin-top: 4px; font-size: 10px; letter-spacing: 2px; }
+.sim-login-page .sim-stage-login {
+    min-height: calc(100vh - 92px);
+    padding: 26px 14px 34px;
+    align-items: flex-start;
+    background: transparent;
+}
+.sim-login-page .sim-card-login {
+    width: 360px;
+    max-width: calc(100vw - 28px);
+    border-radius: 11px;
+    padding: 0 22px 20px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(17,45,72,.24);
+}
+.sim-login-page .sim-login-head {
+    padding: 18px 12px 12px;
+    margin: 0 -22px 12px;
+}
+.sim-login-page .sim-login-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+.sim-login-page .sim-login-head h1 {
+    font-size: 20px;
+    color: #173e8d;
+    margin-bottom: 4px;
+}
+.sim-login-page .sim-login-head p {
+    max-width: 290px;
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: #60738a;
+}
+.sim-login-page .sim-package-chip {
+    margin-bottom: 11px;
+    padding: 7px 9px;
+    border-radius: 6px;
+    background: #f1f5fa;
+    color: #355471;
+    font-size: 11px;
+}
+.sim-login-page .sim-login-field { margin-bottom: 11px; }
+.sim-login-page .sim-login-field label {
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+.sim-login-page .sim-login-field input {
+    height: 40px;
+    border-radius: 6px;
+    border-color: #becde0;
+    background: #e8f0fe;
+    padding: 0 12px;
+    font-size: 13px;
+}
+.sim-login-page .sim-login-field input:focus {
+    border-color: #628fba;
+    box-shadow: 0 0 0 2px rgba(66,115,164,.12);
+}
+.sim-login-page .sim-password-wrap button {
+    width: 34px;
+    height: 34px;
+    color: #8a9caf;
+}
+.sim-login-page .sim-login-btn {
+    height: 42px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #2255dc 0%, #263f9d 100%);
+    font-size: 13px;
+    box-shadow: 0 6px 14px rgba(31,62,126,.22);
+}
+.sim-login-page .sim-login-btn:hover { background: linear-gradient(90deg, #1d4dcc 0%, #22388d 100%); }
+.sim-login-page .sim-back-link {
+    margin-top: 10px;
+    color: #58718a;
+    font-size: 10.5px;
+}
+
+/* V4 - halaman konfirmasi memakai palet biru-abu yang sama dengan referensi */
+.sim-confirm-page {
+    background: #eef1f4;
+    background-image: none;
+}
+.sim-confirm-page .confirm-topbar {
+    min-height: 96px;
+    padding: 12px 34px;
+    background: linear-gradient(90deg, #386c9f 0%, #447ab1 100%);
+}
+.sim-confirm-page .confirm-brand img { width: 48px; height: 48px; }
+.sim-confirm-page .confirm-brand strong { font-size: 16px; }
+.sim-confirm-page .confirm-brand span { margin-top: 4px; font-size: 10px; letter-spacing: 1.5px; }
+.sim-confirm-page .confirm-user i {
+    background: rgba(154,205,255,.42);
+    color: #eef7ff;
+}
+.sim-confirm-page .confirm-shell {
+    grid-template-columns: minmax(0, 2.15fr) minmax(350px, .95fr);
+    gap: 24px;
+    padding: 26px 34px 42px;
+}
+.sim-confirm-page .confirm-token-card,
+.sim-confirm-page .confirm-participant-card {
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 14px 30px rgba(42,61,78,.16);
+}
+.sim-confirm-page .confirm-token-row {
+    min-height: 76px;
+    padding: 15px 34px;
+}
+.sim-confirm-page .confirm-token-text { font-size: 14px; }
+.sim-confirm-page .confirm-token-text strong {
+    font-size: 16px;
+    color: #2e4d69;
+}
+.sim-confirm-page .confirm-refresh-btn {
+    padding: 8px 12px;
+    background: #0d82f6;
+    font-size: 12px;
+}
+.sim-confirm-page .confirm-refresh-btn:hover { background: #0872db; }
+.sim-confirm-page .confirm-rules {
+    padding: 22px 34px 26px;
+    background: #fbfbfb;
+}
+.sim-confirm-page .confirm-rules h2 {
+    margin-bottom: 13px;
+    color: #365a78;
+    font-size: 17px;
+}
+.sim-confirm-page .confirm-rules h2 i { color: #3f78aa; }
+.sim-confirm-page .confirm-rules ol {
+    color: #555f69;
+    font-size: 12.5px;
+    line-height: 1.65;
+}
+.sim-confirm-page .confirm-rules li + li { margin-top: 5px; }
+.sim-confirm-page .confirm-participant-card { padding: 22px 30px 28px; }
+.sim-confirm-page .confirm-participant-card h1 {
+    margin-bottom: 13px;
+    font-size: 21px;
+}
+.sim-confirm-page .confirm-static-row,
+.sim-confirm-page .confirm-field { padding: 8px 0; }
+.sim-confirm-page .confirm-static-row div { font-size: 12.5px; }
+.sim-confirm-page .confirm-field input,
+.sim-confirm-page .confirm-field select {
+    height: 36px;
+    background: #f1f1f1;
+    font-size: 12.5px;
+}
+.sim-confirm-page .confirm-field input:focus,
+.sim-confirm-page .confirm-field select:focus {
+    box-shadow: inset 0 0 0 1px #79a8d0;
+    background: #f7fbff;
+}
+.sim-confirm-page .confirm-token-input label { color: #0d78df; }
+.sim-confirm-page .confirm-submit-btn {
+    height: 36px;
+    margin-top: 22px;
+    background: #0b82f6;
+    font-size: 13px;
+}
+.sim-confirm-page .confirm-submit-btn:hover { background: #0871d7; }
+
+@media (max-width: 760px) {
+    .sim-login-page .sim-topbar { height: 82px; min-height: 82px; padding: 0 16px; }
+    .sim-login-page .sim-stage-login { min-height: calc(100vh - 82px); padding-top: 18px; }
+    .sim-login-page .sim-card-login { width: 350px; padding: 0 18px 18px; }
+    .sim-login-page .sim-login-head { margin-left: -18px; margin-right: -18px; padding-top: 16px; }
+    .sim-confirm-page .confirm-topbar { min-height: 82px; padding: 10px 16px; }
+    .sim-confirm-page .confirm-shell { grid-template-columns: 1fr; gap: 16px; padding: 18px 14px 30px; }
+    .sim-confirm-page .confirm-token-row { padding: 14px 18px; }
+    .sim-confirm-page .confirm-rules { padding: 18px 18px 22px; }
+    .sim-confirm-page .confirm-participant-card { padding: 20px 18px 24px; }
+}
+
+/* V6 - proporsi desktop mengikuti tampilan referensi 100% */
+@media (min-width: 1000px) {
+    .sim-topbar {
+        height: 130px;
+        min-height: 130px;
+        padding: 0 34px;
+    }
+    .sim-brand { gap: 18px; }
+    .sim-brand-center { min-width: 360px; }
+    .sim-brand-logo { width: 60px; height: 60px; }
+    .sim-brand-title { font-size: 23px; letter-spacing: .6px; }
+    .sim-brand-subtitle { margin-top: 7px; font-size: 13px; letter-spacing: 3px; }
+
+    .sim-stage {
+        min-height: calc(100vh - 130px);
+        padding: 34px 18px 56px;
+    }
+    .sim-card-select {
+        width: 448px;
+        padding: 42px 43px;
+        border-radius: 18px;
+    }
+    .sim-round-icon { width: 74px; height: 74px; margin-bottom: 14px; font-size: 31px; }
+    .sim-card h1 { font-size: 27px; }
+    .sim-lead { font-size: 14px; margin: 7px 0 26px; }
+    .sim-field { margin-bottom: 24px; }
+    .sim-field label { font-size: 14px; margin-bottom: 10px; }
+    .sim-select-wrap select { min-height: 51px; border-radius: 11px; padding: 0 42px 0 17px; font-size: 15px; }
+    .sim-primary-btn { min-height: 52px; border-radius: 11px; font-size: 15px; }
+    .sim-footer { bottom: 10px; padding: 10px 22px; font-size: 12px; }
+
+    .sim-login-page .sim-topbar {
+        height: 130px;
+        min-height: 130px;
+        padding: 0 34px;
+    }
+    .sim-login-page .sim-brand { gap: 18px; }
+    .sim-login-page .sim-brand-logo { width: 60px; height: 60px; }
+    .sim-login-page .sim-brand-title { font-size: 23px; letter-spacing: .6px; }
+    .sim-login-page .sim-brand-subtitle { margin-top: 7px; font-size: 13px; letter-spacing: 3px; }
+    .sim-login-page .sim-stage-login {
+        min-height: calc(100vh - 130px);
+        padding: 20px 18px 38px;
+        align-items: flex-start;
+    }
+    .sim-login-page .sim-card-login {
+        width: 575px;
+        max-width: calc(100vw - 36px);
+        border-radius: 20px;
+        padding: 0 40px 34px;
+        box-shadow: 0 18px 45px rgba(25,55,85,.18);
+    }
+    .sim-login-page .sim-login-head {
+        padding: 43px 20px 17px;
+        margin: 0 -40px 28px;
+    }
+    .sim-login-page .sim-login-logo {
+        width: 89px;
+        height: 89px;
+        margin-bottom: 12px;
+        padding: 7px;
+        border-radius: 17px;
+    }
+    .sim-login-page .sim-login-head h1 {
+        font-size: 29px;
+        margin-bottom: 12px;
+    }
+    .sim-login-page .sim-login-head p {
+        max-width: 420px;
+        font-size: 16px;
+        line-height: 1.45;
+    }
+    .sim-login-page .sim-login-field { margin-bottom: 22px; }
+    .sim-login-page .sim-login-field label { margin-bottom: 10px; font-size: 16px; }
+    .sim-login-page .sim-login-field input {
+        height: 60px;
+        border-radius: 10px;
+        padding: 0 20px;
+        font-size: 17px;
+        background: #e9f1fb;
+    }
+    .sim-login-page .sim-password-wrap button { width: 42px; height: 42px; font-size: 18px; right: 8px; }
+    .sim-login-page .sim-login-btn {
+        height: 65px;
+        border-radius: 10px;
+        font-size: 18px;
+        background: linear-gradient(90deg, #2353dc 0%, #253f9f 100%);
+        box-shadow: 0 10px 23px rgba(33,69,164,.18);
+    }
+    .sim-login-page .sim-back-link { margin-top: 16px; font-size: 12px; }
+}
+
+/* V6 - halaman konfirmasi bergaya panel TKA */
+.sim-confirm-page {
+    min-height: 100vh;
+    background: #f1f3f5;
+    background-image: none;
+}
+.sim-confirm-page .confirm-topbar {
+    min-height: 140px;
+    padding: 18px 42px;
+    background: linear-gradient(90deg, #376f9f 0%, #407caf 100%);
+}
+.sim-confirm-page .confirm-brand img { width: 62px; height: 62px; }
+.sim-confirm-page .confirm-brand strong { font-size: 20px; }
+.sim-confirm-page .confirm-brand span { margin-top: 6px; font-size: 12px; letter-spacing: 2px; }
+.sim-confirm-page .confirm-shell {
+    grid-template-columns: minmax(0, 2.12fr) minmax(440px, .95fr);
+    gap: 30px;
+    padding: 34px 34px 48px;
+}
+.sim-confirm-page .confirm-token-card,
+.sim-confirm-page .confirm-participant-card {
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 16px 34px rgba(42,61,78,.16);
+}
+.sim-confirm-page .confirm-token-row {
+    min-height: 92px;
+    padding: 20px 46px;
+    border-bottom: 1px solid #edf0f3;
+}
+.sim-confirm-page .confirm-token-text { font-size: 17px; color: #363d44; }
+.sim-confirm-page .confirm-token-text strong { font-size: 20px; letter-spacing: 2px; color: #263b50; }
+.sim-confirm-page .confirm-refresh-btn { padding: 10px 14px; font-size: 13px; }
+
+.sim-confirm-page .confirm-rules {
+    padding: 0;
+    background: #fff;
+    border-top: 0;
+}
+.rules-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 25px 34px 20px;
+    border-bottom: 1px solid #e7ebef;
+}
+.rules-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9f1f8;
+    color: #3976a8;
+    font-size: 20px;
+}
+.rules-titlebar span {
+    display: block;
+    margin-bottom: 3px;
+    color: #78848e;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+.sim-confirm-page .confirm-rules .rules-titlebar h2 {
+    margin: 0;
+    color: #26313a;
+    font-size: 21px;
+    font-weight: 600;
+}
+.rules-list { padding: 8px 34px 10px; }
+.rule-item {
+    display: grid;
+    grid-template-columns: 42px minmax(0,1fr);
+    gap: 14px;
+    padding: 15px 0;
+    border-bottom: 1px solid #edf0f2;
+}
+.rule-item:last-child { border-bottom: 0; }
+.rule-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf3f8;
+    color: #356f9e;
+    font-size: 12px;
+    font-weight: 800;
+}
+.rule-item b { display: block; margin-bottom: 4px; color: #2c333a; font-size: 14px; }
+.rule-item p { margin: 0; color: #5d6872; font-size: 13px; line-height: 1.55; }
+.rules-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 8px 34px 28px;
+    padding: 13px 15px;
+    border-left: 4px solid #3c7cad;
+    background: #f1f6fa;
+    color: #486273;
+    font-size: 12.5px;
+    line-height: 1.5;
+}
+.rules-notice i { margin-top: 2px; color: #3c7cad; }
+
+.sim-confirm-page .confirm-participant-card { padding: 26px 40px 34px; }
+.sim-confirm-page .confirm-participant-card h1 { margin-bottom: 16px; font-size: 25px; font-weight: 500; }
+.sim-confirm-page .confirm-static-row,
+.sim-confirm-page .confirm-field { padding: 10px 0; }
+.sim-confirm-page .confirm-static-row label,
+.sim-confirm-page .confirm-field label { font-size: 10px; }
+.sim-confirm-page .confirm-static-row div { font-size: 14px; }
+.sim-confirm-page .confirm-field input,
+.sim-confirm-page .confirm-field select { height: 39px; font-size: 14px; }
+.required-mark { color: #c43f3f; font-weight: 800; }
+.confirm-required-note { margin-top: 10px; color: #707a83; font-size: 11px; }
+.confirm-client-alert { margin-top: 0; margin-bottom: 10px; }
+.sim-confirm-page .confirm-submit-btn {
+    height: 42px;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.sim-confirm-page .confirm-submit-btn:disabled {
+    background: #aab4bd;
+    cursor: not-allowed;
+}
+
+@media (max-width: 999px) {
+    .sim-confirm-page .confirm-topbar { min-height: 100px; padding: 14px 20px; }
+    .sim-confirm-page .confirm-shell { grid-template-columns: 1fr; gap: 18px; padding: 20px 16px 32px; }
+    .sim-confirm-page .confirm-user { display: none; }
+    .rules-titlebar, .rules-list { padding-left: 20px; padding-right: 20px; }
+    .rules-notice { margin-left: 20px; margin-right: 20px; }
+}
+
+@media (max-width: 760px) {
+    .sim-login-page .sim-card-login { width: 410px; max-width: calc(100vw - 28px); }
+    .rule-item { grid-template-columns: 36px minmax(0,1fr); gap: 10px; }
+    .rule-number { width: 32px; height: 32px; }
+}
+
+/* V7 - tampilan ruang ujian mengikuti antarmuka TKA */
+:root {
+    --tka-question-font-size: 17px;
+}
+
+.exam-tka-layout {
+    min-height: 100vh;
+    background: #174f79;
+    color: #242a31;
+    overflow-x: hidden;
+}
+
+.tka-exam-topbar {
+    height: 96px;
+    padding: 0 32px;
+    background: linear-gradient(90deg, #0d4f78 0%, #17628f 55%, #276f9d 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: inset 0 -1px rgba(255,255,255,.08);
+}
+.tka-exam-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.tka-exam-brand img { width: 44px; height: 44px; object-fit: contain; }
+.tka-exam-brand strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 560px;
+}
+.tka-exam-brand span {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    opacity: .92;
+}
+.tka-exam-timer {
+    height: 38px;
+    min-width: 130px;
+    padding: 0 14px;
+    border-radius: 5px;
+    background: rgba(255,255,255,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.tka-question-strip {
+    height: 55px;
+    padding: 0 20px;
+    background: #fff;
+    border-bottom: 1px solid #d9dfe5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    font-size: 15px;
+}
+.tka-font-tools { display: flex; align-items: center; gap: 6px; color: #737d86; font-size: 12px; }
+.tka-font-tools button {
+    min-width: 34px;
+    height: 30px;
+    padding: 0 8px;
+    border: 1px solid #ccd6df;
+    border-radius: 5px;
+    background: #fff;
+    color: #3f5365;
+    cursor: pointer;
+    font-weight: 700;
+}
+.tka-font-tools button:hover { background: #f1f6fa; }
+
+.tka-exam-main {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    min-height: calc(100vh - 215px);
+    background: #f6f7f8;
+}
+.tka-exam-rail {
+    min-height: 100%;
+    background: linear-gradient(180deg, #164f78 0%, #174b70 100%);
+    border-right: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    justify-content: center;
+    padding-top: 26px;
+}
+.tka-rail-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d7e8f5;
+    background: rgba(255,255,255,.08);
+}
+.tka-question-wrap {
+    padding: 24px 34px 34px;
+    background: #f4f5f6;
+}
+.tka-question-card {
+    width: min(1120px, 100%);
+    min-height: 470px;
+    margin: 0 auto;
+    padding: 24px 30px 30px;
+    background: #fff;
+    border: 1px solid #dfe4e8;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(25,47,65,.08);
+}
+.tka-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #283542;
+    font-size: 15px;
+}
+.tka-card-heading i { color: #1d5f8a; }
+.tka-card-divider { height: 1px; background: #31485b; margin: 16px 0 22px; }
+.tka-question-text {
+    font-size: var(--tka-question-font-size);
+    line-height: 1.55;
+    color: #20272e;
+}
+.tka-question-text p { margin-top: 0; margin-bottom: 10px; }
+.tka-question-media { margin: 14px 0 18px; text-align: left; }
+.tka-question-media img { max-height: 430px; width: auto; max-width: 100%; border-radius: 3px; }
+.tka-answer-area { margin-top: 22px; }
+
+.tka-choice-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border: 1px solid #dce3e8;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+}
+.tka-choice-row:hover { background: #f8fbfd; border-color: #9ebbd0; }
+.tka-choice-row input { position: absolute; opacity: 0; pointer-events: none; }
+.tka-choice-letter {
+    flex: 0 0 32px;
+    height: 32px;
+    border: 1.5px solid #34729d;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2e6c96;
+    font-weight: 800;
+    background: #fff;
+}
+.tka-choice-row input:checked + .tka-choice-letter { background: #2d719e; color: #fff; }
+.tka-choice-content { flex: 1; padding-top: 4px; font-size: calc(var(--tka-question-font-size) - 1px); line-height: 1.5; }
+.tka-choice-content img { max-width: 100%; height: auto; display: block; margin-top: 8px; }
+
+.tka-binary-instruction,
+.tka-multi-instruction {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #303a43;
+}
+.tka-binary-list { border-top: 1px solid #e0e5e9; }
+.exam-binary-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    min-height: 72px;
+    padding: 13px 12px;
+    border-bottom: 1px solid #e2e7eb;
+}
+.tka-binary-statement {
+    font-size: calc(var(--tka-question-font-size) - 1px);
+    line-height: 1.5;
+    color: #2b333a;
+}
+.tka-binary-actions { display: flex; gap: 10px; }
+.tka-binary-actions label { cursor: pointer; }
+.tka-binary-actions input { position: absolute; opacity: 0; pointer-events: none; }
+.tka-binary-actions span {
+    min-width: 82px;
+    height: 39px;
+    padding: 0 15px;
+    border: 1px solid #cbd5dc;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #57636d;
+    font-size: 13px;
+    font-weight: 700;
+}
+.tka-binary-actions input[value="1"]:checked + span {
+    border-color: #49a47b;
+    background: #e8f6ef;
+    color: #20734f;
+    box-shadow: inset 0 0 0 1px #49a47b;
+}
+.tka-binary-actions input[value="0"]:checked + span {
+    border-color: #9ba9b5;
+    background: #edf1f4;
+    color: #4d5963;
+    box-shadow: inset 0 0 0 1px #9ba9b5;
+}
+.tka-text-input,
+.tka-textarea {
+    width: 100%;
+    border: 1px solid #c9d4dd;
+    border-radius: 5px;
+    background: #fff;
+    padding: 11px 13px;
+    font-size: 15px;
+    outline: none;
+}
+.tka-text-input { height: 44px; }
+.tka-textarea { resize: vertical; min-height: 140px; font-family: inherit; }
+.tka-text-input:focus,
+.tka-textarea:focus { border-color: #4f89b1; box-shadow: 0 0 0 2px rgba(79,137,177,.12); }
+
+.tka-exam-footer {
+    min-height: 64px;
+    padding: 10px 18px;
+    background: #fff;
+    border-top: 1px solid #d9e0e6;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 15px;
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+}
+.tka-footer-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.tka-footer-btn,
+.tka-doubt-btn {
+    min-height: 40px;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 1px solid #cdd7df;
+    background: #f6f8fa;
+    color: #3f4f5d;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.tka-footer-btn:disabled { opacity: .45; cursor: not-allowed; }
+.tka-next { background: #2d759f; color: #fff; border-color: #2d759f; }
+.tka-next.finish { background: #27845d; border-color: #27845d; }
+.tka-doubt-btn { background: #fff8de; border-color: #e8d492; color: #836918; }
+.tka-doubt-btn.active { background: #f7dc7a; color: #5d4b16; }
+.tka-progress-text { color: #535f68; font-size: 12px; text-align: center; }
+
+/* V7 - halaman hasil */
+.tka-finish-page { min-height: 100vh; background: linear-gradient(180deg, #174f79 0%, #1d5b86 100%); }
+.tka-finish-topbar {
+    height: 90px;
+    padding: 0 30px;
+    background: rgba(10,65,99,.5);
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+.tka-finish-brand { display: flex; align-items: center; gap: 11px; }
+.tka-finish-brand img { width: 42px; height: 42px; object-fit: contain; }
+.tka-finish-brand strong { display: block; font-size: 16px; letter-spacing: .5px; }
+.tka-finish-brand span { display: block; margin-top: 3px; font-size: 9px; letter-spacing: 1.5px; opacity: .9; }
+.tka-finish-shell { min-height: calc(100vh - 90px); display: flex; align-items: center; justify-content: center; padding: 28px 16px 50px; }
+.tka-finish-card {
+    width: 720px;
+    max-width: 100%;
+    padding: 42px 46px 38px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 20px 55px rgba(7,34,54,.28);
+    text-align: center;
+}
+.tka-finish-check {
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e7f5ea;
+    color: #4da864;
+    font-size: 37px;
+}
+.tka-finish-card h1 { margin: 0 0 7px; color: #293b8d; font-size: 28px; }
+.tka-finish-subject { color: #707b84; font-size: 14px; margin-bottom: 26px; }
+.tka-result-name {
+    padding: 14px 16px;
+    border: 1px solid #e1e6eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    text-align: left;
+}
+.tka-result-name span { display: block; color: #7b8791; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.tka-result-name strong { display: block; margin-top: 4px; color: #26333d; font-size: 18px; }
+.tka-result-name small { display: block; margin-top: 3px; color: #87929b; }
+.tka-score-box { margin: 20px auto 18px; }
+.tka-score-box span { display: block; color: #7b8791; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.tka-score-box strong { display: block; margin-top: 2px; color: #24479b; font-size: 56px; line-height: 1; }
+.tka-result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
+.tka-result-grid > div { padding: 12px 8px; border-radius: 7px; background: #f4f7f9; }
+.tka-result-grid span { display: block; color: #7a858e; font-size: 10px; }
+.tka-result-grid b { display: block; margin-top: 4px; color: #32414d; font-size: 17px; }
+.tka-score-note { margin: 15px 0 0; color: #7d8790; font-size: 11px; line-height: 1.45; }
+.tka-finish-message { margin: 22px 0 20px; color: #535f67; font-size: 14px; }
+.tka-return-login {
+    min-width: 270px;
+    min-height: 50px;
+    padding: 0 22px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background: #2951ae;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: 0 8px 18px rgba(41,81,174,.18);
+}
+.tka-return-login:hover { background: #234697; color: #fff; }
+
+@media (max-width: 820px) {
+    .tka-exam-topbar { height: 78px; padding: 0 14px; }
+    .tka-exam-brand img { width: 38px; height: 38px; }
+    .tka-exam-brand strong { font-size: 13px; max-width: 220px; }
+    .tka-exam-brand span { font-size: 9px; letter-spacing: 1px; }
+    .tka-exam-timer { min-width: 105px; height: 34px; padding: 0 9px; font-size: 12px; }
+    .tka-question-strip { height: 50px; padding: 0 12px; font-size: 13px; }
+    .tka-font-tools > span { display: none; }
+    .tka-exam-main { grid-template-columns: 48px minmax(0, 1fr); min-height: calc(100vh - 192px); }
+    .tka-exam-rail { padding-top: 18px; }
+    .tka-rail-mark { width: 32px; height: 32px; }
+    .tka-question-wrap { padding: 14px 10px 22px; }
+    .tka-question-card { min-height: 420px; padding: 18px 16px 24px; }
+    .exam-binary-row { grid-template-columns: 1fr; gap: 10px; }
+    .tka-binary-actions { justify-content: flex-end; }
+    .tka-binary-actions span { min-width: 72px; }
+    .tka-exam-footer { grid-template-columns: auto 1fr; padding: 8px 10px; }
+    .tka-progress-text { order: 3; grid-column: 1 / -1; }
+    .tka-footer-actions { justify-content: flex-end; }
+    .tka-footer-btn span { display: none; }
+    .tka-finish-card { padding: 32px 20px 28px; }
+    .tka-result-grid { grid-template-columns: repeat(2, 1fr); }
+    .tka-score-box strong { font-size: 48px; }
+}
+
+/* V9 - tampilan ruang ujian disesuaikan dengan referensi TKA */
+.exam-tka-layout {
+    background: #08245d;
+}
+.tka-exam-topbar {
+    height: 86px;
+    padding: 0 34px;
+    background: linear-gradient(90deg, #061b4f 0%, #08265e 55%, #0c2d68 100%);
+    box-shadow: none;
+}
+.tka-exam-brand { gap: 13px; }
+.tka-exam-brand img { width: 46px; height: 46px; }
+.tka-exam-brand strong {
+    font-size: 18px;
+    letter-spacing: .4px;
+    max-width: 540px;
+}
+.tka-exam-brand span {
+    margin-top: 3px;
+    font-size: 10px;
+    letter-spacing: 1.8px;
+}
+.tka-exam-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-width: 0;
+}
+.tka-exam-timer {
+    height: 35px;
+    min-width: 122px;
+    padding: 0 13px;
+    border-radius: 4px;
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    font-size: 13px;
+}
+.tka-exam-participant {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 420px;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tka-exam-participant span,
+.tka-exam-participant b {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tka-question-strip {
+    height: 64px;
+    padding: 0 28px 0 34px;
+    border-bottom: 1px solid #d7dce2;
+    background: #fff;
+}
+.tka-strip-title {
+    color: #151b23;
+    font-size: 18px;
+    font-weight: 700;
+}
+.tka-font-tools { gap: 7px; }
+.tka-font-tools > span {
+    margin-right: 4px;
+    color: #6f7781;
+    font-size: 11px;
+}
+.tka-font-tools .tka-font-size-btn {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid #bfc8d1;
+    border-radius: 5px;
+    background: #f7f8f9;
+    color: #233142;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.tka-font-tools .tka-font-size-btn.is-small { font-size: 12px; }
+.tka-font-tools .tka-font-size-btn.is-normal { font-size: 15px; }
+.tka-font-tools .tka-font-size-btn.is-large { font-size: 18px; }
+.tka-font-tools .tka-font-size-btn.active {
+    background: #101d4e;
+    border-color: #101d4e;
+    color: #fff;
+}
+.tka-font-tools .tka-list-btn {
+    width: auto;
+    min-width: 118px;
+    height: 36px;
+    padding: 0 13px;
+    margin-left: 5px;
+    border: 1px solid #0d1f55;
+    border-radius: 5px;
+    background: #101d4e;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.tka-exam-main {
+    display: block;
+    min-height: calc(100vh - 216px);
+    padding: 28px 28px 34px;
+    background: linear-gradient(180deg, #08245d 0%, #0a2d6a 100%);
+}
+.tka-question-wrap {
+    width: 100%;
+    padding: 0;
+    background: transparent;
+}
+.tka-question-card {
+    width: min(910px, calc(100vw - 70px));
+    min-height: 445px;
+    margin: 0 auto;
+    padding: 27px 34px 30px;
+    border: 1px solid #d9dde3;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(1,15,48,.18);
+}
+.tka-card-heading {
+    gap: 10px;
+    color: #1f2b5b;
+    font-size: 16px;
+}
+.tka-card-heading i { color: #24569d; }
+.tka-card-divider {
+    height: 1px;
+    margin: 15px 0 24px;
+    background: #26374a;
+}
+.tka-question-text {
+    color: #20242a;
+    line-height: 1.52;
+}
+.tka-question-media { text-align: left; }
+.tka-answer-area { margin-top: 24px; }
+.tka-binary-instruction,
+.tka-multi-instruction {
+    margin-bottom: 12px;
+    color: #273250;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .15px;
+}
+.tka-binary-list {
+    border-top: 1px solid #e2e6eb;
+}
+.exam-binary-row {
+    min-height: 78px;
+    padding: 13px 18px;
+    gap: 24px;
+    border-bottom: 1px solid #e2e6eb;
+}
+.tka-binary-statement {
+    color: #30353b;
+    line-height: 1.48;
+}
+.tka-binary-actions { gap: 10px; }
+.tka-binary-actions span {
+    min-width: 86px;
+    height: 39px;
+    border-radius: 6px;
+    background: #fbfbfb;
+    color: #5b626b;
+}
+.tka-binary-actions input[value="1"]:checked + span {
+    border-color: #4e9f78;
+    background: #edf8f2;
+    color: #246b4f;
+    box-shadow: inset 0 0 0 1px #4e9f78;
+}
+.tka-binary-actions input[value="0"]:checked + span {
+    border-color: #c67d84;
+    background: #fbefef;
+    color: #8e4c54;
+    box-shadow: inset 0 0 0 1px #c67d84;
+}
+.tka-choice-row {
+    border-radius: 6px;
+    box-shadow: none;
+}
+.tka-exam-footer {
+    min-height: 66px;
+    padding: 9px 24px;
+    border-top: 1px solid #d5dbe2;
+    background: #fff;
+    position: sticky;
+    bottom: 0;
+    z-index: 60;
+}
+.tka-footer-btn,
+.tka-doubt-btn {
+    min-height: 42px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.tka-prev {
+    justify-self: start;
+    background: #f6f6f6;
+    border-color: #d3d8de;
+    color: #69717a;
+}
+.tka-prev:not(:disabled):hover { background: #eceff2; }
+.tka-next {
+    background: #143c9d;
+    border-color: #143c9d;
+    color: #fff;
+}
+.tka-next:hover { background: #103486; }
+.tka-next.finish {
+    background: #1d6f56;
+    border-color: #1d6f56;
+}
+.tka-doubt-btn {
+    background: #fff8dc;
+    border-color: #dfc777;
+    color: #80671d;
+}
+.tka-doubt-btn.active {
+    background: #f4df8d;
+    color: #604e17;
+}
+.tka-progress-text {
+    color: #555e69;
+    font-size: 12px;
+}
+
+@media (max-width: 820px) {
+    .tka-exam-topbar { height: 76px; padding: 0 14px; }
+    .tka-exam-right { gap: 9px; }
+    .tka-exam-participant { display: none; }
+    .tka-question-strip { height: 56px; padding: 0 12px; }
+    .tka-strip-title { font-size: 15px; }
+    .tka-font-tools > span { display: none; }
+    .tka-font-tools .tka-list-btn { min-width: 38px; width: 38px; padding: 0; }
+    .tka-font-tools .tka-list-btn span { display: none; }
+    .tka-exam-main { min-height: calc(100vh - 198px); padding: 16px 10px 24px; }
+    .tka-question-card { width: 100%; min-height: 410px; padding: 20px 16px 24px; }
+    .exam-binary-row { grid-template-columns: 1fr; padding: 13px 8px; gap: 10px; }
+    .tka-binary-actions { justify-content: flex-end; }
+    .tka-exam-footer { padding: 8px 10px; }
+}
+
+/* V9 - login admin menggunakan visual yang sama dengan login peserta */
+.admin-auth-screen {
+    min-height: 100vh;
+}
+.admin-auth-screen .sim-stage-login {
+    min-height: calc(100vh - 130px);
+}
+.admin-auth-screen .sim-login-head .admin-login-badge {
+    display: inline-flex;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eef4fb;
+    color: #496b8f;
+    font-size: 11px;
+    font-weight: 700;
+}
+.admin-auth-screen #infoMessage:empty { display: none; }
+.admin-auth-screen #infoMessage {
+    margin-bottom: 16px;
+}
+.admin-auth-screen .help-block {
+    margin-top: 5px;
+    color: #b83a3a;
+    font-size: 12px;
+}
+.admin-auth-screen .sim-login-field.has-error input {
+    border-color: #d57575;
+    box-shadow: 0 0 0 2px rgba(213,117,117,.10);
+}
+
+
+/* V10 - samakan warna halaman soal dengan halaman awal/login */
+.exam-tka-layout {
+    background: #3f7fb8;
+}
+.exam-tka-layout .tka-exam-topbar {
+    background: rgba(55, 111, 159, .94);
+}
+.exam-tka-layout .tka-exam-main {
+    background-color: #3f7fb8;
+    background-image:
+        radial-gradient(circle at 20px 18px, rgba(255,255,255,.06) 1.4px, transparent 1.6px),
+        radial-gradient(circle at 62px 54px, rgba(255,255,255,.04) 1.4px, transparent 1.6px),
+        linear-gradient(180deg, #3f79ae 0%, #4584bd 100%);
+    background-size: 78px 78px, 78px 78px, 100% 100%;
+}
+.exam-tka-layout .tka-exam-timer {
+    background: rgba(255,255,255,.12);
+}
+.exam-tka-layout .tka-font-tools .tka-font-size-btn.active,
+.exam-tka-layout .tka-font-tools .tka-list-btn {
+    background: #397cb6;
+    border-color: #397cb6;
+}
+.exam-tka-layout .tka-next {
+    background: #397cb6;
+    border-color: #397cb6;
+}
+.exam-tka-layout .tka-next:hover {
+    background: #2f6fa8;
+}
+.exam-tka-layout .tka-card-heading {
+    color: #2f5272;
+}
+.exam-tka-layout .tka-card-heading i {
+    color: #397cb6;
+}
+.exam-tka-layout .tka-card-divider {
+    background: #60768a;
+}
+
+/* V11 - pemisah header seperti referensi Pusmendik, diterapkan ke semua halaman */
+.sim-topbar,
+.confirm-topbar,
+.tka-exam-topbar,
+.tka-finish-topbar {
+    position: relative;
+    z-index: 20;
+    border-bottom: 1px solid rgba(28, 67, 101, .24);
+    box-shadow:
+        inset 0 -1px 0 rgba(255,255,255,.08),
+        0 5px 12px rgba(27, 61, 91, .18);
+}
+.sim-topbar::after,
+.confirm-topbar::after,
+.tka-exam-topbar::after,
+.tka-finish-topbar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 8px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(29, 67, 100, .13) 0%, rgba(29, 67, 100, .05) 45%, rgba(29, 67, 100, 0) 100%);
+}
+
+/* V12 - kalibrasi warna mengikuti tampilan Simulasi TKA Pusmendik */
+:root {
+    --sim-blue: #3b70a5;
+    --sim-blue-dark: #34689a;
+    --sim-blue-deep: #2f6292;
+}
+
+/* Warna header resmi: gradasi biru kiri-ke-kanan, bukan biru solid. */
+.sim-topbar,
+.confirm-topbar,
+.tka-exam-topbar,
+.tka-finish-topbar,
+.sim-login-page .sim-topbar,
+.sim-confirm-page .confirm-topbar,
+.exam-tka-layout .tka-exam-topbar {
+    background: linear-gradient(90deg, #34689a 0%, #3f74aa 55%, #497eb6 100%) !important;
+    border-bottom: 1px solid rgba(32, 72, 108, .28);
+    box-shadow:
+        inset 0 -1px 0 rgba(255,255,255,.07),
+        0 4px 10px rgba(30, 64, 95, .15) !important;
+}
+
+/* Area halaman mengikuti gradasi biru Pusmendik yang lebih kalem. */
+.sim-public,
+.sim-login-page,
+.sim-confirm-page,
+.exam-tka-layout,
+.exam-tka-layout .tka-exam-main,
+.tka-finish-page {
+    background-color: #3b70a5 !important;
+    background-image:
+        radial-gradient(circle at 20px 18px, rgba(255,255,255,.075) 1.2px, transparent 1.45px),
+        radial-gradient(circle at 62px 54px, rgba(255,255,255,.045) 1.2px, transparent 1.45px),
+        linear-gradient(90deg, #376b9e 0%, #3f74aa 55%, #467bb2 100%) !important;
+    background-size: 78px 78px, 78px 78px, 100% 100% !important;
+}
+
+/* Bayangan di batas bawah header dibuat tipis seperti referensi. */
+.sim-topbar::after,
+.confirm-topbar::after,
+.tka-exam-topbar::after,
+.tka-finish-topbar::after {
+    bottom: -7px;
+    height: 7px;
+    background: linear-gradient(180deg, rgba(28,62,92,.12) 0%, rgba(28,62,92,.045) 50%, rgba(28,62,92,0) 100%);
+}
+
+/* Logo tidak memakai kotak/lingkaran latar. Hanya bayangan lembut di belakang logo. */
+.sim-brand-logo,
+.sim-login-logo,
+.confirm-brand img,
+.tka-exam-brand img,
+.tka-finish-brand img,
+.admin-auth-screen .sim-brand-logo,
+.admin-auth-screen .sim-login-logo {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 5px 8px rgba(19, 52, 81, .24));
+}
+
+/* Hindari lapisan putih/abu di sekitar logo login yang sebelumnya terlihat seperti badge. */
+.sim-login-head .sim-login-logo,
+.admin-auth-screen .sim-login-head .sim-login-logo {
+    background-color: transparent !important;
+}
+
+/* V13 - warna TKAD Kab. Tegal + proporsi khusus halaman login */
+:root {
+    --tkad-header-left: #35699c;
+    --tkad-header-mid: #3d72a7;
+    --tkad-header-right: #467bb2;
+    --tkad-body-left: #345f8a;
+    --tkad-body-mid: #3a6897;
+    --tkad-body-right: #4273a7;
+}
+
+/* Palet warna mengikuti tampilan TKAD Kabupaten Tegal.
+   Hanya warna yang diseragamkan; ukuran halaman pilih mapel tidak diubah. */
+.sim-topbar,
+.confirm-topbar,
+.tka-exam-topbar,
+.tka-finish-topbar,
+.sim-login-page .sim-topbar,
+.sim-confirm-page .confirm-topbar,
+.exam-tka-layout .tka-exam-topbar {
+    background: linear-gradient(90deg,
+        var(--tkad-header-left) 0%,
+        var(--tkad-header-mid) 55%,
+        var(--tkad-header-right) 100%) !important;
+    border-bottom: 1px solid rgba(38, 78, 113, .34) !important;
+    box-shadow:
+        inset 0 -1px 0 rgba(255,255,255,.06),
+        0 5px 12px rgba(31, 63, 91, .14) !important;
+}
+
+.sim-public,
+.sim-login-page,
+.sim-confirm-page,
+.exam-tka-layout,
+.exam-tka-layout .tka-exam-main,
+.tka-finish-page {
+    background-color: var(--tkad-body-mid) !important;
+    background-image: linear-gradient(108deg,
+        var(--tkad-body-left) 0%,
+        var(--tkad-body-mid) 52%,
+        var(--tkad-body-right) 100%) !important;
+    background-size: 100% 100% !important;
+}
+
+/* Ukuran ini KHUSUS halaman login peserta/admin.
+   Halaman pemilihan mapel/paket tetap memakai ukuran sebelumnya. */
+@media (min-width: 761px) {
+    .sim-login-page .sim-topbar {
+        height: 118px !important;
+        min-height: 118px !important;
+        padding: 0 32px !important;
+    }
+
+    .sim-login-page .sim-stage-login {
+        min-height: calc(100vh - 118px) !important;
+        padding: 18px 18px 30px !important;
+        align-items: flex-start !important;
+    }
+
+    .sim-login-page .sim-card-login {
+        width: 480px !important;
+        max-width: calc(100vw - 36px) !important;
+        border-radius: 18px !important;
+        padding: 0 32px 27px !important;
+        box-shadow: 0 17px 42px rgba(20, 49, 76, .20) !important;
+    }
+
+    .sim-login-page .sim-login-head {
+        padding: 30px 18px 16px !important;
+        margin: 0 -32px 22px !important;
+    }
+
+    .sim-login-page .sim-login-logo {
+        width: 74px !important;
+        height: 74px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .sim-login-page .sim-login-head h1 {
+        font-size: 26px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .sim-login-page .sim-login-head p {
+        max-width: 365px !important;
+        font-size: 14px !important;
+        line-height: 1.42 !important;
+    }
+
+    .sim-login-page .sim-login-field {
+        margin-bottom: 17px !important;
+    }
+
+    .sim-login-page .sim-login-field label {
+        margin-bottom: 8px !important;
+        font-size: 14px !important;
+    }
+
+    .sim-login-page .sim-login-field input {
+        height: 52px !important;
+        border-radius: 9px !important;
+        padding: 0 16px !important;
+        font-size: 15px !important;
+    }
+
+    .sim-login-page .sim-password-wrap button {
+        width: 40px !important;
+        height: 40px !important;
+        right: 6px !important;
+        font-size: 16px !important;
+    }
+
+    .sim-login-page .sim-login-btn {
+        height: 54px !important;
+        border-radius: 9px !important;
+        font-size: 16px !important;
+    }
+
+    .sim-login-page .sim-back-link {
+        margin-top: 13px !important;
+        font-size: 11px !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .sim-login-page .sim-card-login {
+        width: min(92vw, 420px) !important;
+    }
+}
+
+/* V14 - panel stimulus/pertanyaan + konfirmasi pengumpulan ujian */
+.exam-tka-layout .tka-question-card.has-split {
+    width: min(1360px, calc(100vw - 56px));
+    max-width: none;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.tka-split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+.tka-split-panel {
+    min-width: 0;
+    min-height: 500px;
+    padding: 26px 30px 30px;
+    border: 1px solid rgba(34, 67, 96, .14);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(24, 54, 82, .16);
+    overflow: auto;
+}
+
+.tka-stimulus-panel .tka-card-heading,
+.tka-prompt-panel .tka-card-heading {
+    color: #2f5272;
+}
+
+.tka-stimulus-panel .tka-card-heading i,
+.tka-prompt-panel .tka-card-heading i {
+    color: #397cb6;
+}
+
+.tka-stimulus-text,
+.tka-generic-prompt {
+    font-size: var(--tka-question-font-size);
+    line-height: 1.62;
+    color: #252c34;
+}
+
+.tka-stimulus-text p,
+.tka-generic-prompt p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.tka-generic-prompt {
+    margin-bottom: 20px;
+}
+
+.tka-stimulus-media {
+    margin: 12px 0 16px;
+    text-align: center;
+}
+
+.tka-stimulus-media img,
+.tka-stimulus-media video {
+    display: block;
+    max-width: 100%;
+    max-height: 430px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.tka-stimulus-media audio {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.tka-answer-instruction {
+    margin: 18px 0 10px;
+    color: #314f69;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .2px;
+}
+
+.tka-exam-alert {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    max-width: 920px;
+    margin: 12px auto 0;
+    padding: 10px 14px;
+    border: 1px solid #efc7c7;
+    border-radius: 7px;
+    background: #fff4f4;
+    color: #9a3e3e;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tka-submit-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(18, 38, 60, .54);
+    backdrop-filter: blur(2px);
+}
+
+.tka-submit-modal.open {
+    display: flex;
+}
+
+.tka-submit-dialog {
+    width: 520px;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 22px 60px rgba(14, 36, 56, .28);
+}
+
+.tka-submit-banner {
+    height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, var(--tkad-header-left) 0%, var(--tkad-header-mid) 55%, var(--tkad-header-right) 100%);
+}
+
+.tka-submit-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .18);
+    color: #fff;
+    font-size: 26px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.tka-submit-body {
+    padding: 0 30px 28px;
+}
+
+.tka-submit-body h2 {
+    margin: -1px -30px 0;
+    padding: 13px 20px 12px;
+    border-bottom: 1px solid #e5ebf0;
+    color: #3b4752;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tka-submit-question {
+    margin: 24px 0 20px;
+    color: #737d87;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.tka-submit-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 15px 12px;
+    border: 1px solid #edf0f3;
+    border-radius: 8px;
+    background: #fbfcfd;
+}
+
+.tka-submit-stats div {
+    text-align: center;
+}
+
+.tka-submit-stats span {
+    display: block;
+    min-height: 30px;
+    color: #7b858e;
+    font-size: 11px;
+    line-height: 1.25;
+}
+
+.tka-submit-stats strong {
+    display: block;
+    margin-top: 3px;
+    font-size: 22px;
+    line-height: 1;
+}
+
+#stat-answered { color: #4c9b70; }
+#stat-unanswered { color: #c86a72; }
+#stat-doubt { color: #75808a; }
+
+.tka-submit-warning {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    min-height: 52px;
+    padding: 11px 12px;
+    border-left: 3px solid #e0b558;
+    border-radius: 5px;
+    background: #fff9e9;
+    color: #766339;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.tka-submit-warning.is-blocking {
+    border-left-color: #cf7278;
+    background: #fff3f3;
+    color: #965159;
+}
+
+.tka-submit-warning i {
+    margin-top: 2px;
+}
+
+.tka-submit-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.tka-submit-actions button {
+    height: 44px;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .25px;
+    cursor: pointer;
+}
+
+.tka-submit-back {
+    background: #45b8c3;
+}
+
+.tka-submit-back:hover {
+    background: #37a7b1;
+}
+
+.tka-submit-finish {
+    background: #d75b84;
+}
+
+.tka-submit-finish:hover:not(:disabled) {
+    background: #c64d75;
+}
+
+.tka-submit-finish:disabled {
+    background: #d6a8b7;
+    cursor: not-allowed;
+    opacity: .72;
+}
+
+@media (max-width: 980px) {
+    .exam-tka-layout .tka-question-card.has-split {
+        width: calc(100vw - 24px);
+    }
+    .tka-split-grid {
+        grid-template-columns: 1fr;
+    }
+    .tka-split-panel {
+        min-height: 0;
+        padding: 20px 18px 24px;
+    }
+}
+
+@media (max-width: 560px) {
+    .tka-submit-modal { padding: 12px; }
+    .tka-submit-body { padding: 0 18px 20px; }
+    .tka-submit-body h2 { margin-left: -18px; margin-right: -18px; font-size: 17px; }
+    .tka-submit-stats { gap: 4px; padding: 12px 7px; }
+    .tka-submit-stats span { font-size: 10px; }
+    .tka-submit-stats strong { font-size: 19px; }
+    .tka-submit-actions { gap: 8px; }
+}
+
+
+/* V15 - daftar soal compact seperti tampilan TKAD */
+.exam-tka-layout .exam-modal {
+    background: rgba(13, 35, 55, .52);
+    backdrop-filter: blur(1.5px);
+}
+
+.exam-tka-layout .exam-modal-dialog {
+    width: 430px;
+    max-width: calc(100vw - 30px);
+    border-radius: 10px;
+    box-shadow: 0 20px 48px rgba(18, 42, 63, .28);
+}
+
+.exam-tka-layout .exam-modal-head {
+    min-height: 62px;
+    padding: 0 18px 0 20px;
+    border-bottom: 0;
+    background: linear-gradient(90deg, var(--tkad-header-left) 0%, var(--tkad-header-mid) 56%, var(--tkad-header-right) 100%);
+    color: #fff;
+}
+
+.exam-tka-layout .exam-modal-head b {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.exam-tka-layout .exam-modal-head b i {
+    font-size: 15px;
+    opacity: .95;
+}
+
+.exam-tka-layout .exam-modal-head button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 28px;
+    line-height: 30px;
+    opacity: .9;
+}
+
+.exam-tka-layout .exam-modal-head button:hover {
+    background: rgba(255,255,255,.12);
+    opacity: 1;
+}
+
+.exam-tka-layout .exam-number-grid {
+    grid-template-columns: repeat(5, 52px);
+    justify-content: center;
+    gap: 9px;
+    padding: 18px 18px 20px;
+    background: #fff;
+}
+
+.exam-tka-layout .exam-number-btn {
+    width: 52px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0;
+    border: 1px solid #d2dbe3;
+    border-radius: 6px;
+    background: #fff;
+    color: #283743;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 1px 2px rgba(20, 48, 70, .04);
+    transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease;
+}
+
+.exam-tka-layout .exam-number-btn:hover {
+    transform: translateY(-1px);
+    border-color: #9fb3c2;
+    box-shadow: 0 3px 8px rgba(25, 57, 81, .10);
+}
+
+/* Sudah dikerjakan = hijau */
+.exam-tka-layout .exam-number-btn.answered {
+    background: #27b768;
+    color: #fff;
+    border-color: #27b768;
+}
+
+/* Ragu-ragu = kuning; status ragu mengalahkan status sudah dijawab */
+.exam-tka-layout .exam-number-btn.doubt,
+.exam-tka-layout .exam-number-btn.answered.doubt {
+    background: #f0c94e;
+    color: #493d12;
+    border-color: #dfb933;
+}
+
+.exam-tka-layout .exam-number-btn.doubt::after {
+    content: none;
+    display: none;
+}
+
+/* Nomor yang sedang dibuka = biru seperti referensi */
+.exam-tka-layout .exam-number-btn.current,
+.exam-tka-layout .exam-number-btn.current.answered,
+.exam-tka-layout .exam-number-btn.current.doubt,
+.exam-tka-layout .exam-number-btn.current.answered.doubt {
+    background: #337fbd;
+    color: #fff;
+    border-color: #337fbd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(51, 127, 189, .14);
+}
+
+@media (max-width: 520px) {
+    .exam-tka-layout .exam-modal-dialog {
+        width: 350px;
+    }
+    .exam-tka-layout .exam-modal-head {
+        min-height: 56px;
+    }
+    .exam-tka-layout .exam-modal-head b {
+        font-size: 16px;
+    }
+    .exam-tka-layout .exam-number-grid {
+        grid-template-columns: repeat(5, 46px);
+        gap: 7px;
+        padding: 15px 12px 18px;
+    }
+    .exam-tka-layout .exam-number-btn {
+        width: 46px;
+        height: 43px;
+        min-height: 43px;
+        font-size: 12px;
+    }
+}
+
+
+/* V16 - Selected answer states aligned with TKAD/TKA reference */
+.tka-choice-row {
+    border-color: transparent;
+    background: transparent;
+    padding: 11px 12px;
+}
+.tka-choice-row:hover {
+    border-color: #d5e1ec;
+    background: #fbfdff;
+}
+.tka-choice-row.is-selected {
+    border: 1.5px solid #285da8;
+    background: #eef7ff;
+    box-shadow: 0 0 0 1px rgba(40,93,168,.04);
+}
+
+/* Single choice: circular letter, selected becomes blue check */
+.tka-answer-area[data-type="1"] .tka-choice-letter {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    border-radius: 50%;
+    border: 1.7px solid #284f8b;
+    color: #284f8b;
+    background: #fff;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row.is-selected .tka-choice-letter {
+    position: relative;
+    background: #285aab;
+    border-color: #285aab;
+    color: transparent;
+    font-size: 0;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row.is-selected .tka-choice-letter::after {
+    content: "✓";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 21px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+/* Multiple choice: square letter, selected becomes blue check */
+.tka-answer-area[data-type="2"] .tka-choice-row .tka-choice-letter {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    border-radius: 7px;
+    border: 1.6px solid #243b67;
+    color: #243b67;
+    background: #fff;
+}
+.tka-answer-area[data-type="2"] .tka-choice-row.is-selected .tka-choice-letter {
+    position: relative;
+    background: #2858aa;
+    border-color: #234d96;
+    color: transparent;
+    font-size: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+}
+.tka-answer-area[data-type="2"] .tka-choice-row.is-selected .tka-choice-letter::after {
+    content: "✓";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+/* Benar / Salah: only the selected action gets the strong outline */
+.tka-binary-actions span {
+    border-color: transparent;
+    background: transparent;
+    color: #253044;
+    min-width: 84px;
+}
+.tka-binary-actions label:hover span {
+    border-color: #d4dce4;
+    background: #fafcfd;
+}
+.tka-binary-actions input[value="1"]:checked + span {
+    border: 1.7px solid #16866a;
+    background: #f2fbf7;
+    color: #0f624c;
+    box-shadow: none;
+}
+.tka-binary-actions input[value="0"]:checked + span {
+    border: 1.7px solid #c93b43;
+    background: #fff6f6;
+    color: #a62c33;
+    box-shadow: none;
+}
+
+@media (max-width: 720px) {
+    .tka-choice-row { padding: 10px; }
+    .tka-answer-area[data-type="1"] .tka-choice-letter,
+    .tka-answer-area[data-type="2"] .tka-choice-row .tka-choice-letter {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+}
+
+
+/* V17 - centang PG dibuat dengan CSS shape agar selalu terlihat di semua font/browser */
+.tka-answer-area[data-type="1"] .tka-choice-letter {
+    position: relative;
+    overflow: hidden;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row input[type="radio"]:checked + .tka-choice-letter {
+    background: #285aab !important;
+    border-color: #285aab !important;
+    color: transparent !important;
+    font-size: 0 !important;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row input[type="radio"]:checked + .tka-choice-letter::after {
+    content: "" !important;
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 8px;
+    height: 14px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: translate(-50%, -56%) rotate(45deg);
+    transform-origin: center;
+    display: block !important;
+    box-sizing: border-box;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row:has(input[type="radio"]:checked) {
+    border: 1.5px solid #285da8;
+    background: #eef7ff;
+}
+
+/* Fallback untuk browser tanpa :has(); class is-selected tetap disinkronkan JavaScript. */
+.tka-answer-area[data-type="1"] .tka-choice-row.is-selected .tka-choice-letter::after {
+    content: "" !important;
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 8px;
+    height: 14px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: translate(-50%, -56%) rotate(45deg);
+    display: block !important;
+    box-sizing: border-box;
+}
+
+
+/* V18 - centang jawaban memakai SVG inline agar tidak hilang di browser/font tertentu */
+.tka-choice-letter .tka-choice-letter-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.tka-choice-letter .tka-choice-check {
+    display: none;
+    width: 19px;
+    height: 19px;
+    color: #fff;
+    pointer-events: none;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row input[type="radio"]:checked + .tka-choice-letter,
+.tka-answer-area[data-type="2"] .tka-choice-row input[type="checkbox"]:checked + .tka-choice-letter {
+    background: #285aab !important;
+    border-color: #285aab !important;
+    color: #fff !important;
+    font-size: inherit !important;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row input[type="radio"]:checked + .tka-choice-letter::after,
+.tka-answer-area[data-type="2"] .tka-choice-row input[type="checkbox"]:checked + .tka-choice-letter::after {
+    content: none !important;
+    display: none !important;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row input[type="radio"]:checked + .tka-choice-letter .tka-choice-letter-text,
+.tka-answer-area[data-type="2"] .tka-choice-row input[type="checkbox"]:checked + .tka-choice-letter .tka-choice-letter-text {
+    display: none !important;
+}
+.tka-answer-area[data-type="1"] .tka-choice-row input[type="radio"]:checked + .tka-choice-letter .tka-choice-check,
+.tka-answer-area[data-type="2"] .tka-choice-row input[type="checkbox"]:checked + .tka-choice-letter .tka-choice-check {
+    display: block !important;
+}
+
+/* Samakan jarak dalam input Token dengan Nama Peserta dan field lain. */
+.sim-confirm-page .confirm-token-input input {
+    width: 100%;
+    height: 39px;
+    box-sizing: border-box;
+    background: #f1f1f1 !important;
+    padding: 0 12px !important;
+    border: 0 !important;
+    border-radius: 0;
+    font-size: 14px;
+}
+.sim-confirm-page .confirm-token-input input:focus {
+    background: #f7fbff !important;
+    box-shadow: inset 0 0 0 1px #79a8d0;
+}
+
+
+/* V19 - selected marker fallback after CSS cleanup */
+.tka-choice-row.is-selected .tka-choice-letter {
+    background: #285aab !important;
+    border-color: #285aab !important;
+    color: #fff !important;
+}
+.tka-choice-row.is-selected .tka-choice-letter .tka-choice-letter-text {
+    display: none !important;
+}
+.tka-choice-row.is-selected .tka-choice-letter .tka-choice-check {
+    display: block !important;
+    margin: auto;
+}
+
+/* V48 - indikator peserta simulasi online, dibuat kecil agar tidak mengganggu tampilan */
+.sim-online-mini {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 25px;
+    padding: 3px 9px;
+    border: 1px solid rgba(255,255,255,.30);
+    border-radius: 14px;
+    background: rgba(17, 47, 76, .18);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: 0 2px 7px rgba(13, 41, 68, .08);
+}
+.sim-online-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #39d98a;
+    box-shadow: 0 0 0 2px rgba(57,217,138,.14);
+    flex: 0 0 7px;
+}
+.sim-topbar { position: relative; }
+.sim-topbar:not(.sim-topbar-center) > .sim-online-mini { margin-left: auto; }
+.sim-topbar-center > .sim-online-mini {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.confirm-topbar .sim-online-mini { margin-left: auto; margin-right: 12px; }
+.tka-exam-right .sim-online-mini { margin-right: 2px; }
+.tka-finish-topbar { position: relative; }
+.tka-finish-topbar > .sim-online-mini { margin-left: auto; margin-right: 22px; }
+
+@media (max-width: 720px) {
+    .sim-topbar-center > .sim-online-mini { right: 10px; }
+    .confirm-topbar .sim-online-mini { margin-right: 6px; }
+    .tka-exam-right .sim-online-mini { padding: 3px 7px; font-size: 10px; }
+    .tka-finish-topbar > .sim-online-mini { margin-right: 10px; }
+}

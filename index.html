@@ -1,45 +1,120 @@
 <!DOCTYPE html>
 <html lang="id">
+
+<!-- Mirrored from https://tkayemga.my.id/ by HTTrack Website Copier/3.x [XR&CO], Wed, 28 Oct 2026 09:27:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UJIAN ONLINE CBT</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/98/Kota_Bengkulu.png" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #eee;
-      overflow: hidden; /* Mencegah scroll ganda */
-    }
-
-    .iframe-container {
-      width: 100%;
-      height: 100dvh; /* Menggunakan dvh agar pas di mobile browser */
-      overflow: hidden;
-    }
-
-    iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Simulasi TKA - SD NEGERI SLAWI WETAN 01 </title>
+    <link rel="shortcut icon" href="uploads/settings/logo_kiri.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="assets/app/css/simulasi-public4d45.css?v=20260926-48">
 </head>
-<body>
-  <div class="iframe-container">
-    <iframe
-      id="app"
-      src="https://script.google.com/macros/s/AKfycbxunFw9APNPfzdga_2sLLwiZSYrJwIbhtpd0udIEolQPYvOwTDAfR0I39JCh7X43Fh_/exec"
-      scrolling="yes"
-      allowfullscreen="true"
-      webkitallowfullscreen="true"
-      mozallowfullscreen="true"
-      allow="fullscreen; camera; microphone; display-capture; geolocation;">
-    </iframe>
-  </div>
+<body class="sim-public">
+<header class="sim-topbar sim-topbar-center">
+    <div class="sim-brand sim-brand-center">
+        <img src="uploads/settings/logo_kiri.png" alt="Logo" class="sim-brand-logo">
+        <div>
+            <div class="sim-brand-title">SD NEGERI SLAWI WETAN 01 </div>
+            <div class="sim-brand-subtitle">APLIKASI UJIAN ONLINE - SIMULASI TKA</div>
+        </div>
+    </div>
+</header>
+
+<main class="sim-stage">
+    <section class="sim-card sim-card-select">
+        <div class="sim-round-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h1>Simulasi TKA</h1>
+        <p class="sim-lead">Pilih mata pelajaran dan paket soal untuk memulai simulasi</p>
+
+        
+        <form action="https://tkayemga.my.id/simulasi/pilih" id="form-simulasi" autocomplete="off" method="post" accept-charset="utf-8">
+                                                                       <input type="hidden" name="csrf_token" value="5e669bad33c6066e18c255c3cdfd26a4" />
+            <div class="sim-field">
+                <label for="mapel_id"><i class="fas fa-layer-group"></i> Mata Pelajaran:</label>
+                <div class="sim-select-wrap">
+                    <select id="mapel_id" name="mapel_id" required >
+                        <option value="">Pilih mata pelajaran...</option>
+                                                    <option value="43">Bahasa Indonesia</option>
+                                                    <option value="45">IPAS</option>
+                                                    <option value="44">Matematika</option>
+                                            </select>
+                </div>
+            </div>
+
+            <div class="sim-field">
+                <label for="bank_id"><i class="fas fa-book"></i> Paket Soal:</label>
+                <div class="sim-select-wrap">
+                    <select id="bank_id" name="bank_id" required disabled>
+                        <option value="">Pilih paket soal...</option>
+                    </select>
+                </div>
+            </div>
+
+            
+            <button type="submit" id="btn-mulai" class="sim-primary-btn" disabled>
+                <i class="fas fa-play"></i> Mulai Simulasi
+            </button>
+        </form>    </section>
+</main>
+
+<footer class="sim-footer">Copyright &copy; 2026 Dedi Soleman,S.Pd.</footer>
+
+<script>
+(function () {
+    var packages = [{"id_bank":"10","bank_kode":"Gladi TKAD","bank_nama":"","bank_mapel_id":"43","tampil_pg":"10","tampil_kompleks":"4","tampil_jodohkan":"16","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Bahasa Indonesia","kode_mapel":"LIT01","jumlah_soal":"30"},{"id_bank":"14","bank_kode":"BINDO01","bank_nama":"","bank_mapel_id":"43","tampil_pg":"13","tampil_kompleks":"12","tampil_jodohkan":"5","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Bahasa Indonesia","kode_mapel":"LIT01","jumlah_soal":"30"},{"id_bank":"18","bank_kode":"BINDO02","bank_nama":"","bank_mapel_id":"43","tampil_pg":"20","tampil_kompleks":"5","tampil_jodohkan":"5","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Bahasa Indonesia","kode_mapel":"LIT01","jumlah_soal":"30"},{"id_bank":"21","bank_kode":"BINDO03","bank_nama":"","bank_mapel_id":"43","tampil_pg":"18","tampil_kompleks":"7","tampil_jodohkan":"5","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Bahasa Indonesia","kode_mapel":"LIT01","jumlah_soal":"30"},{"id_bank":"20","bank_kode":"IPAS02","bank_nama":"","bank_mapel_id":"45","tampil_pg":"15","tampil_kompleks":"8","tampil_jodohkan":"7","tampil_isian":"0","tampil_esai":"0","nama_mapel":"IPAS","kode_mapel":"IPAS01","jumlah_soal":"30"},{"id_bank":"22","bank_kode":"IPAS04","bank_nama":"","bank_mapel_id":"45","tampil_pg":"15","tampil_kompleks":"7","tampil_jodohkan":"8","tampil_isian":"0","tampil_esai":"0","nama_mapel":"IPAS","kode_mapel":"IPAS01","jumlah_soal":"30"},{"id_bank":"11","bank_kode":"Gladi TKAD IPAS","bank_nama":"","bank_mapel_id":"45","tampil_pg":"10","tampil_kompleks":"10","tampil_jodohkan":"10","tampil_isian":"0","tampil_esai":"0","nama_mapel":"IPAS","kode_mapel":"IPAS01","jumlah_soal":"30"},{"id_bank":"15","bank_kode":"IPAS01","bank_nama":"","bank_mapel_id":"45","tampil_pg":"16","tampil_kompleks":"6","tampil_jodohkan":"8","tampil_isian":"0","tampil_esai":"0","nama_mapel":"IPAS","kode_mapel":"IPAS01","jumlah_soal":"30"},{"id_bank":"19","bank_kode":"IPAS03","bank_nama":"","bank_mapel_id":"45","tampil_pg":"15","tampil_kompleks":"5","tampil_jodohkan":"10","tampil_isian":"0","tampil_esai":"0","nama_mapel":"IPAS","kode_mapel":"IPAS01","jumlah_soal":"30"},{"id_bank":"13","bank_kode":"MAT01","bank_nama":"","bank_mapel_id":"44","tampil_pg":"16","tampil_kompleks":"7","tampil_jodohkan":"7","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Matematika","kode_mapel":"Num01","jumlah_soal":"30"},{"id_bank":"16","bank_kode":"MAT02","bank_nama":"","bank_mapel_id":"44","tampil_pg":"12","tampil_kompleks":"9","tampil_jodohkan":"9","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Matematika","kode_mapel":"Num01","jumlah_soal":"30"},{"id_bank":"17","bank_kode":"MAT03","bank_nama":"","bank_mapel_id":"44","tampil_pg":"19","tampil_kompleks":"4","tampil_jodohkan":"7","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Matematika","kode_mapel":"Num01","jumlah_soal":"30"},{"id_bank":"12","bank_kode":"GLADI TKAD MAT","bank_nama":"","bank_mapel_id":"44","tampil_pg":"16","tampil_kompleks":"6","tampil_jodohkan":"8","tampil_isian":"0","tampil_esai":"0","nama_mapel":"Matematika","kode_mapel":"Num01","jumlah_soal":"30"}] || [];
+    var mapel = document.getElementById('mapel_id');
+    var bank = document.getElementById('bank_id');
+    var button = document.getElementById('btn-mulai');
+    var form = document.getElementById('form-simulasi');
+    var byMapel = {};
+    packages.forEach(function (item) {
+        var key = String(item.bank_mapel_id);
+        if (!byMapel[key]) byMapel[key] = [];
+        byMapel[key].push(item);
+    });
+
+    function resetBank() {
+        bank.innerHTML = '<option value="">Pilih paket soal...</option>';
+        bank.disabled = true;
+        button.disabled = true;
+    }
+
+    mapel && mapel.addEventListener('change', function () {
+        resetBank();
+        if (!this.value) return;
+
+        var found = byMapel[String(mapel.value)] || [];
+
+        found.forEach(function (item, index) {
+            var option = document.createElement('option');
+            option.value = item.id_bank;
+            var label = item.bank_nama || item.bank_kode || ('Paket ' + (index + 1));
+            if (item.bank_kode && label.indexOf(item.bank_kode) === -1) {
+                label += ' (' + item.bank_kode + ')';
+            }
+            option.textContent = label + ' - ' + item.jumlah_soal + ' soal';
+            bank.appendChild(option);
+        });
+
+        bank.disabled = found.length === 0;
+    });
+
+    bank && bank.addEventListener('change', function () {
+        button.disabled = !this.value;
+    });
+
+    form && form.addEventListener('submit', function () {
+        if (button.disabled) return;
+        button.disabled = true;
+        button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Membuka...';
+    });
+})();
+</script>
+
+
 </body>
+
+<!-- Mirrored from https://tkayemga.my.id/ by HTTrack Website Copier/3.x [XR&CO], Wed, 28 Oct 2026 09:27:24 GMT -->
 </html>
